@@ -16,7 +16,7 @@ resource "aws_subnet" "qyt_outside_subnet" {
   vpc_id = aws_vpc.qyt_aws_vpc.id
   cidr_block = "10.0.1.0/24"
   map_public_ip_on_launch = true
-  availability_zone = "ap-northeast-2a"
+  availability_zone = format("%s/%s", var.aws_region, "a")
   tags = {
     Name = "qyt_outside_subnet"
   }
@@ -106,8 +106,8 @@ resource "aws_security_group" "qyt_aws_allow_ssh_web" {
 }
 
 resource "aws_instance" "amazon_linux_2" {
-  key_name      = "new-aws"
-  ami           = "ami-01af223aa7f274198"
+  key_name      = var.aws_region_key
+  ami           = var.region_ami[var.aws_region]
   instance_type = "t2.micro"
   subnet_id = aws_subnet.qyt_outside_subnet.id
   iam_instance_profile = "WebService"

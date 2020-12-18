@@ -3,6 +3,11 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
+variable "aws_region_key" {
+  type    = string
+  default = "us-key"
+}
+
 variable "default_subnet" {
   description = "default_subnet"
   default = "subnet-0a5beac1d236280dd"
