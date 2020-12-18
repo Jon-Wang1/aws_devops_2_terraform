@@ -1,6 +1,4 @@
 provider "aws" {
-  version = "3.21.0"
-
   region = var.aws_region
 }
 
