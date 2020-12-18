@@ -24,7 +24,6 @@ variable "db_write_capacity" {
 }
 
 variable "region_ami" {
-  type = "map"
   default = {
     ap-northeast-2 = "ami-03461b78fdba0ff9d"
     us-east-1 = "ami-04d29b6f966df1537"
