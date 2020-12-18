@@ -3,9 +3,14 @@ variable "aws_region" {
   default = "us-east-1"
 }
 
-variable "db_table_name" {
+variable "aws_region_key" {
   type    = string
-  default = "terraform-learn"
+  default = "us-key"
+}
+
+variable "default_subnet" {
+  description = "default_subnet"
+  default = "subnet-0a5beac1d236280dd"
 }
 
 variable "db_read_capacity" {
@@ -18,7 +23,9 @@ variable "db_write_capacity" {
   default = 5
 }
 
-variable "tag_user_name" {
-  type = string
-  default = "db_tag"
+variable "region_ami" {
+  default = {
+    ap-northeast-2 = "ami-03461b78fdba0ff9d"
+    us-east-1 = "ami-04d29b6f966df1537"
+  }
 }
