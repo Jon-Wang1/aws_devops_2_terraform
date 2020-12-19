@@ -9,9 +9,9 @@
 #service sshd restart
 
 # 设置aws的region
-mkdir ~/.aws/
-echo '[default]' > ~/.aws/config
-echo 'region=us-east-1' >> ~/.aws/config
+# mkdir ~/.aws/
+# echo '[default]' > ~/.aws/config
+# echo 'region=us-east-1' >> ~/.aws/config
 
 # git下载项目
 yum install -y git
