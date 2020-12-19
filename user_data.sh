@@ -31,7 +31,7 @@ pip3 install requests
 # 使用python脚本向数据库接入数据
 python3 /aws_flask/insert_db_2_insert.py
 # 使用python脚本上传静态文件(图片)到webapp-aws[名字有严格要求,需要提前创建]的s3存储
-python3 /aws_flask/upload_files.py
+# python3 /aws_flask/upload_files.py
 
 # 安装与配置uwsgi
 yum install -y gcc python3-devel
