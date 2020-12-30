@@ -8,11 +8,6 @@ variable "aws_region_key" {
   default = "us-key"
 }
 
-variable "default_subnet" {
-  description = "default_subnet"
-  default = "subnet-0a5beac1d236280dd"
-}
-
 variable "db_read_capacity" {
   type    = number
   default = 5

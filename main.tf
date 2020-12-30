@@ -1,9 +1,18 @@
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+}
+
 provider "aws" {
   region = var.aws_region
 }
 
 resource "aws_vpc" "qyt_aws_vpc" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "10.8.0.0/16"
 
   tags = {
     Name = "qyt_aws_vpc"
@@ -12,7 +21,7 @@ resource "aws_vpc" "qyt_aws_vpc" {
 
 resource "aws_subnet" "qyt_outside_subnet" {
   vpc_id = aws_vpc.qyt_aws_vpc.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = "10.8.1.0/24"
   map_public_ip_on_launch = true
   availability_zone = format("%s%s", var.aws_region, "a")
   tags = {
