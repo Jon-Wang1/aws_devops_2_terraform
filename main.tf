@@ -126,7 +126,7 @@ resource "aws_instance" "qytang_ec2" {
 }
 
 resource "aws_route53_record" "ec2web" {
-  zone_id = Z1JOS2YODO11W5
+  zone_id = "Z1JOS2YODO11W5"
   name    = "terraform.mingjiao.org"
   type    = "A"
   ttl     = "300"
