@@ -80,7 +80,7 @@ resource "aws_dynamodb_table" "dynamodb_table" {
 }
 
 resource "aws_security_group" "qyt_aws_allow_ssh_web" {
-  name        = "allow_ssh_web"
+  name        = "ec_sg"
   description = "Allow ssh and web inbound traffic"
   vpc_id      = aws_vpc.qyt_aws_vpc.id
 
@@ -108,11 +108,11 @@ resource "aws_security_group" "qyt_aws_allow_ssh_web" {
   }
 
   tags = {
-    Name = "qyt_aws_allow_ssh_web"
+    Name = "ec_sg"
   }
 }
 
-resource "aws_instance" "amazon_linux_2" {
+resource "aws_instance" "qytang_ec2" {
   key_name      = var.aws_region_key
   ami           = var.region_ami[var.aws_region]
   instance_type = "t2.micro"
@@ -123,4 +123,12 @@ resource "aws_instance" "amazon_linux_2" {
     Name = "qytang ec2"
   }
   user_data = file("user_data.sh")
+}
+
+resource "aws_route53_record" "ec2web" {
+  zone_id = Z1JOS2YODO11W5
+  name    = "terraform.mingjiao.org"
+  type    = "A"
+  ttl     = "300"
+  records = [aws_instance.qytang_ec2.public_ip]
 }
