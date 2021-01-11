@@ -16,9 +16,11 @@ service sshd restart
 # git下载项目
 yum install -y git
 # aws s3 cp s3://qytangawss3/.gitconfig ~/.gitconfig
+mkdir -p /home/ec2-user
 cd /home/ec2-user
 git config --global credential.helper '!aws codecommit credential-helper $@'
 git config --global credential.UseHttpPath true
+
 cd /root
 git config --global credential.helper '!aws codecommit credential-helper $@'
 git config --global credential.UseHttpPath true
