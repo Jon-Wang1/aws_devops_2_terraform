@@ -112,6 +112,14 @@ resource "aws_security_group" "qyt_aws_allow_ssh_web" {
   }
 }
 
+data "template_cloudinit_config" "config" {
+  base64_encode = true
+  part {
+    content_type = "text/x-shellscript"
+    content      = ".gitconfig"
+     }
+}
+
 resource "aws_instance" "qytang_ec2" {
   key_name      = var.aws_region_key
   ami           = var.region_ami[var.aws_region]
@@ -122,7 +130,7 @@ resource "aws_instance" "qytang_ec2" {
   tags = {
     Name = "qytang ec2"
   }
-  user_data = file("user_data.sh")
+  user_data = "${data.template_cloudinit_config.config.rendered}"
 }
 
 resource "aws_route53_record" "ec2web" {
