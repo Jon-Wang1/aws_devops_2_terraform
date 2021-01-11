@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # 激活ssh root密码登录
-#sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
-#sed -i "s/#PermitRootLogin yes/PermitRootLogin yes/g" /etc/ssh/sshd_config
-#sed -i "s/UsePAM yes/UsePAM no/g" /etc/ssh/sshd_config
-#> ~/.ssh/authorized_keys
-#sudo sh -c 'echo root:Cisc0123 | chpasswd'
-#service sshd restart
+sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/g" /etc/ssh/sshd_config
+sed -i "s/#PermitRootLogin yes/PermitRootLogin yes/g" /etc/ssh/sshd_config
+sed -i "s/UsePAM yes/UsePAM no/g" /etc/ssh/sshd_config
+> ~/.ssh/authorized_keys
+sudo sh -c 'echo root:Cisc0123 | chpasswd'
+service sshd restart
 
 # 设置aws的region
 # mkdir ~/.aws/
@@ -15,7 +15,7 @@
 
 # git下载项目
 yum install -y git
-aws s3 cp s3://qytangawss3/.gitconfig ~/.gitconfig
+# aws s3 cp s3://qytangawss3/.gitconfig ~/.gitconfig
 # git config --global credential.helper '!aws codecommit credential-helper $@'
 # git config --global credential.UseHttpPath true
 sudo git clone https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/aws_flask /aws_flask

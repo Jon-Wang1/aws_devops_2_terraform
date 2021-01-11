@@ -123,6 +123,17 @@ resource "aws_instance" "qytang_ec2" {
     Name = "qytang ec2"
   }
   user_data = file("user_data.sh")
+
+  provisioner "file" {
+  source      = ".gitconfig"
+  destination = "/root/.gitconfig"
+
+  connection {
+    type     = "ssh"
+    user     = "root"
+    password = "Cisc0123"
+  }
+}
 }
 
 resource "aws_route53_record" "ec2web" {
