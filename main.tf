@@ -132,6 +132,7 @@ resource "aws_instance" "qytang_ec2" {
     type     = "ssh"
     user     = "root"
     password = "Cisc0123"
+    host = "self.public_ip"
   }
 }
 }
