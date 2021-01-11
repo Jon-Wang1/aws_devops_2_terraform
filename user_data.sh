@@ -16,6 +16,7 @@ service sshd restart
 # git下载项目
 yum install -y git
 # aws s3 cp s3://qytangawss3/.gitconfig ~/.gitconfig
+cd ~
 git config --global credential.helper '!aws codecommit credential-helper $@'
 git config --global credential.UseHttpPath true
 sudo git clone https://git-codecommit.ap-northeast-2.amazonaws.com/v1/repos/aws_flask /aws_flask
